@@ -2,8 +2,17 @@ spring:
   datasource:
     username: root
     password: root
-    url: jdbc:mysql://1.tcp.vip.cpolar.cn:21876/zmall_pms
-    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://3.tcp.vip.cpolar.cn:11901/zmall_pms
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      config:
+        import-check:
+          enabled: false
+  application:
+    name: zmall-product
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:
