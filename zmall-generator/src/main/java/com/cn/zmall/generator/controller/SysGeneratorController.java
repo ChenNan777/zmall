@@ -1,10 +1,4 @@
-/**
- * Copyright (c) 2018 人人开源 All rights reserved.
- *
- * https://www.renren.io
- *
- * 版权所有，侵权必究！
- */
+
 
 package com.cn.zmall.generator.controller;
 
@@ -26,7 +20,7 @@ import java.util.Map;
 /**
  * 代码生成器
  * 
- * @author Mark sunlightcs@gmail.com
+
  */
 @Controller
 @RequestMapping("/sys/generator")
@@ -53,7 +47,7 @@ public class SysGeneratorController {
 		byte[] data = sysGeneratorService.generatorCode(tables.split(","));
 		
 		response.reset();  
-        response.setHeader("Content-Disposition", "attachment; filename=\"renren.zip\"");  
+        response.setHeader("Content-Disposition", "attachment; filename=\"admin.zip\"");
         response.addHeader("Content-Length", "" + data.length);  
         response.setContentType("application/octet-stream; charset=UTF-8");  
   

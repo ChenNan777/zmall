@@ -1,11 +1,3 @@
-/**
- * Copyright (c) 2016-2019 人人开源 All rights reserved.
- *
- * https://www.renren.io
- *
- * 版权所有，侵权必究！
- */
-
 package com.cn.zmall.admin.modules.oss.cloud;
 
 import com.aliyun.oss.OSSClient;
@@ -16,20 +8,18 @@ import java.io.InputStream;
 
 /**
  * 阿里云存储
- *
- * @author Mark sunlightcs@gmail.com
  */
 public class AliyunCloudStorageService extends CloudStorageService {
     private OSSClient client;
 
-    public AliyunCloudStorageService(CloudStorageConfig config){
+    public AliyunCloudStorageService(CloudStorageConfig config) {
         this.config = config;
 
         //初始化
         init();
     }
 
-    private void init(){
+    private void init() {
         client = new OSSClient(config.getAliyunEndPoint(), config.getAliyunAccessKeyId(),
                 config.getAliyunAccessKeySecret());
     }
@@ -43,7 +33,7 @@ public class AliyunCloudStorageService extends CloudStorageService {
     public String upload(InputStream inputStream, String path) {
         try {
             client.putObject(config.getAliyunBucketName(), path, inputStream);
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new RRException("上传文件失败，请检查配置信息", e);
         }
 

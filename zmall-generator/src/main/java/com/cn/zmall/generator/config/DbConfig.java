@@ -1,16 +1,8 @@
-/**
- * Copyright (c) 2018 人人开源 All rights reserved.
- * <p>
- * https://www.renren.io
- * <p>
- * 版权所有，侵权必究！
- */
+
 
 package com.cn.zmall.generator.config;
 
-import com.cn.zmall.admin.dao.*;
 import com.cn.zmall.generator.dao.*;
-import io.renren.dao.*;
 import com.cn.zmall.generator.utils.RRException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,12 +10,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import zmall.admin.dao.*;
 
 /**
  * 数据库配置
  *
- * @author Mark sunlightcs@gmail.com
+
  */
 @Configuration
 public class DbConfig {

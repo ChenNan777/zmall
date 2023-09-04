@@ -1,10 +1,4 @@
-/**
- * Copyright (c) 2018 人人开源 All rights reserved.
- *
- * https://www.renren.io
- *
- * 版权所有，侵权必究！
- */
+
 
 package com.cn.zmall.admin.datasource.config;
 
@@ -23,7 +17,7 @@ import java.util.Map;
 /**
  * 配置多数据源
  *
- * @author Mark sunlightcs@gmail.com
+
  */
 @Configuration
 @EnableConfigurationProperties(DynamicDataSourceProperties.class)
@@ -49,7 +43,7 @@ public class DynamicDataSourceConfig {
         return dynamicDataSource;
     }
 
-    private Map<Object, Object> getDynamicDataSource(){
+    private Map<Object, Object> getDynamicDataSource() {
         Map<String, DataSourceProperties> dataSourcePropertiesMap = properties.getDatasource();
         Map<Object, Object> targetDataSources = new HashMap<>(dataSourcePropertiesMap.size());
         dataSourcePropertiesMap.forEach((k, v) -> {

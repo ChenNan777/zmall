@@ -1,11 +1,3 @@
-/**
- * Copyright (c) 2016-2019 人人开源 All rights reserved.
- *
- * https://www.renren.io
- *
- * 版权所有，侵权必究！
- */
-
 package com.cn.zmall.admin.common.xss;
 
 import org.apache.commons.io.IOUtils;
@@ -24,24 +16,33 @@ import java.util.Map;
 
 /**
  * XSS过滤处理
- *
- * @author Mark sunlightcs@gmail.com
  */
 public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
-    //没被包装过的HttpServletRequest（特殊场景，需要自己过滤）
-    HttpServletRequest orgRequest;
     //html过滤
     private final static HTMLFilter htmlFilter = new HTMLFilter();
+    //没被包装过的HttpServletRequest（特殊场景，需要自己过滤）
+    HttpServletRequest orgRequest;
 
     public XssHttpServletRequestWrapper(HttpServletRequest request) {
         super(request);
         orgRequest = request;
     }
 
+    /**
+     * 获取最原始的request
+     */
+    public static HttpServletRequest getOrgRequest(HttpServletRequest request) {
+        if (request instanceof XssHttpServletRequestWrapper) {
+            return ((XssHttpServletRequestWrapper) request).getOrgRequest();
+        }
+
+        return request;
+    }
+
     @Override
     public ServletInputStream getInputStream() throws IOException {
         //非json类型，直接返回
-        if(!MediaType.APPLICATION_JSON_VALUE.equalsIgnoreCase(super.getHeader(HttpHeaders.CONTENT_TYPE))){
+        if (!MediaType.APPLICATION_JSON_VALUE.equalsIgnoreCase(super.getHeader(HttpHeaders.CONTENT_TYPE))) {
             return super.getInputStream();
         }
 
@@ -100,9 +101,9 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
     }
 
     @Override
-    public Map<String,String[]> getParameterMap() {
-        Map<String,String[]> map = new LinkedHashMap<>();
-        Map<String,String[]> parameters = super.getParameterMap();
+    public Map<String, String[]> getParameterMap() {
+        Map<String, String[]> map = new LinkedHashMap<>();
+        Map<String, String[]> parameters = super.getParameterMap();
         for (String key : parameters.keySet()) {
             String[] values = parameters.get(key);
             for (int i = 0; i < values.length; i++) {
@@ -131,17 +132,6 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
      */
     public HttpServletRequest getOrgRequest() {
         return orgRequest;
-    }
-
-    /**
-     * 获取最原始的request
-     */
-    public static HttpServletRequest getOrgRequest(HttpServletRequest request) {
-        if (request instanceof XssHttpServletRequestWrapper) {
-            return ((XssHttpServletRequestWrapper) request).getOrgRequest();
-        }
-
-        return request;
     }
 
 }

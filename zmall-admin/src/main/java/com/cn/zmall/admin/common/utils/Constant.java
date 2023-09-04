@@ -1,10 +1,4 @@
-/**
- * Copyright (c) 2016-2019 人人开源 All rights reserved.
- * <p>
- * https://www.renren.io
- * <p>
- * 版权所有，侵权必究！
- */
+
 
 package com.cn.zmall.admin.common.utils;
 
@@ -17,8 +11,6 @@ import java.util.stream.Stream;
 
 /**
  * 常量
- *
- * @author Mark sunlightcs@gmail.com
  */
 public class Constant {
     /**
@@ -132,20 +124,20 @@ public class Constant {
             this.validatorGroupClass = validatorGroupClass;
         }
 
-        public int getValue() {
-            return value;
-        }
-
-        public Class<?> getValidatorGroupClass() {
-            return this.validatorGroupClass;
-        }
-
         public static CloudService getByValue(Integer value) {
             Optional<CloudService> first = Stream.of(CloudService.values()).filter(cs -> value.equals(cs.value)).findFirst();
             if (!first.isPresent()) {
                 throw new IllegalArgumentException("非法的枚举值:" + value);
             }
             return first.get();
+        }
+
+        public int getValue() {
+            return value;
+        }
+
+        public Class<?> getValidatorGroupClass() {
+            return this.validatorGroupClass;
         }
     }
 

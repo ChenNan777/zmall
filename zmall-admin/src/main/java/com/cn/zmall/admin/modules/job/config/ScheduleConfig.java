@@ -1,11 +1,3 @@
-/**
- * Copyright (c) 2016-2019 人人开源 All rights reserved.
- *
- * https://www.renren.io
- *
- * 版权所有，侵权必究！
- */
-
 package com.cn.zmall.admin.modules.job.config;
 
 import org.springframework.context.annotation.Bean;
@@ -17,8 +9,6 @@ import java.util.Properties;
 
 /**
  * 定时任务配置
- *
- * @author Mark sunlightcs@gmail.com
  */
 @Configuration
 public class ScheduleConfig {
@@ -30,7 +20,7 @@ public class ScheduleConfig {
 
         //quartz参数
         Properties prop = new Properties();
-        prop.put("org.quartz.scheduler.instanceName", "RenrenScheduler");
+        prop.put("org.quartz.scheduler.instanceName", "AdminScheduler");
         prop.put("org.quartz.scheduler.instanceId", "AUTO");
         //线程池配置
         prop.put("org.quartz.threadPool.class", "org.quartz.simpl.SimpleThreadPool");
@@ -52,7 +42,7 @@ public class ScheduleConfig {
 
         factory.setQuartzProperties(prop);
 
-        factory.setSchedulerName("RenrenScheduler");
+        factory.setSchedulerName("AdminScheduler");
         //延时启动
         factory.setStartupDelay(30);
         factory.setApplicationContextSchedulerContextKey("applicationContextKey");

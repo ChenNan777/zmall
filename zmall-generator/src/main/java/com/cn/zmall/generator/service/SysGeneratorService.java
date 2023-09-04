@@ -1,10 +1,4 @@
-/**
- * Copyright (c) 2018 人人开源 All rights reserved.
- * <p>
- * https://www.renren.io
- * <p>
- * 版权所有，侵权必究！
- */
+
 
 package com.cn.zmall.generator.service;
 
@@ -29,7 +23,7 @@ import java.util.zip.ZipOutputStream;
 /**
  * 代码生成器
  *
- * @author Mark sunlightcs@gmail.com
+
  */
 @Service
 public class SysGeneratorService {

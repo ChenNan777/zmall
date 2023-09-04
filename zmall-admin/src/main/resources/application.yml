@@ -8,9 +8,17 @@ server:
     connection-timeout: 5000ms
   port: 8080
   servlet:
-    context-path: /renren-fast
+    context-path: /
 
 spring:
+  # cloud配置
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      config:
+        import-check:
+          enabled: false
   # 环境 dev|test|prod
   profiles:
     active: dev
@@ -48,7 +56,7 @@ spring:
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*.xml
   #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: io.renren.modules.*.entity
+  typeAliasesPackage: com.cn.zmall.modules.*.entity
   global-config:
     #数据库相关配置
     db-config:
