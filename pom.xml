@@ -15,8 +15,8 @@
         <module>zmall-order</module>
         <module>zmall-ware</module>
         <module>zmall-product</module>
-        <module>renren-fast</module>
-        <module>renren-generator</module>
+        <module>zmall-admin</module>
+        <module>zmall-generator</module>
         <module>zmall-common</module>
         <module>zmall-gateway</module>
         <module>zmall-gateway</module>
