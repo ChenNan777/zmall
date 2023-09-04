@@ -35,6 +35,14 @@ public class CategoryController {
     }
 
     /**
+     * 列出所有分类及子分类 以树形结构组装
+     */
+    @RequestMapping("/list/tree")
+    public R listTree() {
+        return R.ok().put("data",categoryService.listWithTree());
+    }
+
+    /**
      * 信息
      */
     @RequestMapping("/info/{catId}")
