@@ -6,6 +6,22 @@ spring:
       config:
         import-check:
           enabled: false
+    gateway:
+      routes:
+        - id: product_route
+          uri: lb://zmall-product
+          predicates:
+            - Path=/api/product/**
+          filters:
+              - RewritePath=/api/?(?<segment>/?.*),/$\{segment}
+
+        - id: admin_route
+          uri: lb://zmall-admin
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/?(?<segment>.*),/admin/$\{segment}
+
   application:
     name: zmall-gateway
 server:
