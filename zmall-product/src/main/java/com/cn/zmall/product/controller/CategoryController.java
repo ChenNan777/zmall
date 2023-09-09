@@ -1,5 +1,6 @@
 package com.cn.zmall.product.controller;
 
+import com.alibaba.nacos.shaded.com.google.j2objc.annotations.Weak;
 import com.cn.zmall.common.utils.PageUtils;
 import com.cn.zmall.common.utils.R;
 import com.cn.zmall.product.entity.CategoryEntity;
@@ -39,7 +40,7 @@ public class CategoryController {
      */
     @RequestMapping("/list/tree")
     public R listTree() {
-        return R.ok().put("data",categoryService.listWithTree());
+        return R.ok().put("data", categoryService.listWithTree());
     }
 
     /**
@@ -68,6 +69,16 @@ public class CategoryController {
     @RequestMapping("/update")
     public R update(@RequestBody CategoryEntity category) {
         categoryService.updateById(category);
+
+        return R.ok();
+    }
+
+    /**
+     * 修改
+     */
+    @RequestMapping("/update/drag")
+    public R updateDragChanges(@RequestBody CategoryEntity[] categoryList) {
+        categoryService.updateBatchById(Arrays.asList(categoryList));
 
         return R.ok();
     }
