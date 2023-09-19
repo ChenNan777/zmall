@@ -4,16 +4,12 @@ import com.aliyun.oss.ClientException;
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
 import com.aliyun.oss.OSSException;
-import com.aliyun.oss.common.auth.CredentialsProviderFactory;
-import com.aliyun.oss.common.auth.EnvironmentVariableCredentialsProvider;
 import com.aliyun.oss.model.PutObjectRequest;
 import com.aliyun.oss.model.PutObjectResult;
-import com.cn.zmall.product.entity.BrandEntity;
-import com.cn.zmall.product.service.BrandService;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -31,23 +27,24 @@ class ZmallProductApplicationTests {
 
         // Endpoint以华东1（杭州）为例，其它Region请按实际情况填写。
         String endpoint = "oss-cn-hangzhou.aliyuncs.com";
-        // 从环境变量中获取访问凭证。运行本代码示例之前，请确保已设置环境变量OSS_ACCESS_KEY_ID和OSS_ACCESS_KEY_SECRET。
-        EnvironmentVariableCredentialsProvider credentialsProvider = CredentialsProviderFactory.newEnvironmentVariableCredentialsProvider();
+        //accessKeyId
+        String accessKeyId = "LTAI5tRfjzgvLMMQn5qz2498";
+        //secretAccessKey
+        String secretAccessKey = "VfVY6FCwDNxPuN9SQjv2l6Z100vc22";
         // 填写Bucket名称，例如examplebucket。
-        String bucketName = "examplebucket";
+        String bucketName = "zmall-cn";
         // 填写Object完整路径，完整路径中不能包含Bucket名称，例如exampledir/exampleobject.txt。
-        String objectName = "exampledir/exampleobject.txt";
+        String objectName = "test.jpg";
         // 填写本地文件的完整路径，例如D:\\localpath\\examplefile.txt。
         // 如果未指定本地路径，则默认从示例程序所属项目对应本地路径中上传文件流。
-        String filePath = "D:\\localpath\\examplefile.txt";
+        String filePath = "C:\\Users\\90539\\Desktop\\pics\\0d40c24b264aa511.jpg";
 
         // 创建OSSClient实例。
-        OSS ossClient = new OSSClientBuilder().build(endpoint, credentialsProvider);
+        OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, secretAccessKey);
 
         try {
-            InputStream inputStream = new FileInputStream(filePath);
             // 创建PutObjectRequest对象。
-            PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, objectName, inputStream);
+            PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, objectName, new File(filePath));
             // 创建PutObject请求。
             PutObjectResult result = ossClient.putObject(putObjectRequest);
         } catch (OSSException oe) {
@@ -62,8 +59,6 @@ class ZmallProductApplicationTests {
                     + "a serious internal problem while trying to communicate with OSS, "
                     + "such as not being able to access the network.");
             System.out.println("Error Message:" + ce.getMessage());
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } finally {
             if (ossClient != null) {
                 ossClient.shutdown();
