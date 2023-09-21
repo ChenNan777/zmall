@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      config:
+        import-check:
+          enabled: true
+  application:
+    name: zmall-third-party
+server:
+  port: 30000

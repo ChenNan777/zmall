@@ -1,11 +1,10 @@
-package com.cn.zmall.product;
+package com.cn.zmall.thirdparty;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ZmallProductApplicationTests {
-
+class ZmallThirdPartyApplicationTests {
 
     @Test
     void contextLoads() {

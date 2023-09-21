@@ -2,7 +2,7 @@ spring:
   datasource:
     username: root
     password: root
-    url: jdbc:mysql://3.tcp.vip.cpolar.cn:12756/zmall_pms
+    url: jdbc:mysql://5.tcp.vip.cpolar.cn:14522/zmall_pms
     driver-class-name: com.mysql.cj.jdbc.Driver
   cloud:
     nacos:
@@ -10,9 +10,15 @@ spring:
         server-addr: 127.0.0.1:8848
       config:
         import-check:
-          enabled: false
+          enabled: true
   application:
     name: zmall-product
+alibaba:
+  cloud:
+    access-key: LTAI5tH9RvyepvpHpPraTQXc
+    secret-key: BXiafMjPSODQuMpNk6EetvH3s4JkTz
+    oss:
+      endpoint: oss-cn-hangzhou.aliyuncs.com
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:

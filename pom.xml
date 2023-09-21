@@ -19,7 +19,7 @@
         <module>zmall-generator</module>
         <module>zmall-common</module>
         <module>zmall-gateway</module>
-        <module>zmall-gateway</module>
+        <module>zmall-third-party</module>
     </modules>
 
 
