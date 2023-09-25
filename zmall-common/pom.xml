@@ -80,6 +80,13 @@
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
             <version>3.0.1</version>
         </dependency>
+        <!-- 数据校验 JSR303 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+            <version>2.2.2.RELEASE</version>
+        </dependency>
+
 
 
     </dependencies>
